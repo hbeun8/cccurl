@@ -1,17 +1,19 @@
 package main
 
 import (
-	"bufio"
+	//"bufio"
 	"flag"
 	"fmt"
+	"io"
 	"os"
+
 	//"strings"
 	//"io"
-	"net/http"
-	"time"
 	"encoding/json"
 	"maps"
+	"net/http"
 	"slices"
+	"time"
 )
 
 
@@ -72,8 +74,12 @@ func main() {
 	if err != nil {
 		fmt.Println("Client policy Error ", err)
 	}
+	/*
 	scanner := bufio.NewScanner(res.Body)
 	for scanner.Scan(){
 		fmt.Println(scanner.Text()) 
-	}
+	}*/
+
+	body, _ := io.ReadAll(res.Body)
+	fmt.Printf("%s", body)
 }
